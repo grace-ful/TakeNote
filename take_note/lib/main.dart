@@ -53,10 +53,16 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildNote(String noteText, int index){
+    if (noteText != "") {
+        return new ListTile(
+          title: new Text(noteText),
+          trailing: IconButton(icon: Icon(Icons.delete), onPressed: () {_removeNote(index);}),
+      );
+    }
     return new ListTile(
-      title: new Text(noteText),
-      onTap:() => _removeNote(index)
+          title: new Text(noteText),
     );
+
   }
 
   void _addNewNoteScreen() {
@@ -65,8 +71,16 @@ class _HomePageState extends State<HomePage> {
             builder: (context) {
               return new Scaffold(
                   appBar: new AppBar(
-                      title: new Text('Add a new note')
-                  ),
+                    title: TextField(
+                    autocorrect: true,
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                      hintText: 'New Note',
+                    ),
+                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22),
+                ),
+            backgroundColor: Colors.purple,
+              ),
                   body: new TextField(
                     autofocus: true,
                     decoration: new InputDecoration(
@@ -114,7 +128,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text("Take Note Homepage"),
+          title: new Text("Take Note "),
         ),
         body: _buildNotes(),
         floatingActionButton: new FloatingActionButton(

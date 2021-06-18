@@ -50,7 +50,7 @@ class _NewNotesState extends State<NewNotes> {
               ),
               style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22),
             ),
-            backgroundColor: Colors.yellow[900],
+            backgroundColor: Colors.purple,
           ),
 
           Container(
