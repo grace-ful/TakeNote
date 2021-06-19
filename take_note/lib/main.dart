@@ -133,10 +133,18 @@ class _HomePageState extends State<HomePage> {
         child: Container(
           color: Colors.white70,
           child: ListView(
-            padding: EdgeInsets.all(5.0),
+            padding: EdgeInsets.zero,
             children: <Widget>[
               DrawerHeader(
-                child: Text('TakeNote'),
+                decoration: BoxDecoration(
+                  color: Colors.purple,
+                ),
+                child: Text('TakeNote',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Colors.white,
+                ),
+        ),
               ),
               ListTile(
                 leading: Icon(Icons.home_outlined, color: Colors.purple[800],),
