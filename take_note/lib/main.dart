@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
 
       ),
       home: new HomePage(),
-      
+
     );
   }
 }
@@ -30,39 +30,40 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<String> notes = [];
 
-  void _addNewNote(String task){
-    if(task.length > 0) {
+  void _addNewNote(String task) {
+    if (task.length > 0) {
       setState(() => notes.add(task));
     }
   }
 
-  void _deleteNote(int index){
+  void _deleteNote(int index) {
     setState(() => notes.removeAt(index));
   }
 
-  Widget _buildNotes(){
+  Widget _buildNotes() {
     return new ListView.builder(
-      itemBuilder: (context, index){
-        if(index < notes.length){
-          return _buildNote(notes[index], index);
-        }else{
-          return _buildNote("", -1);
+        itemBuilder: (context, index) {
+          if (index < notes.length) {
+            return _buildNote(notes[index], index);
+          } else {
+            return _buildNote("", -1);
+          }
         }
-      }
     );
   }
 
-  Widget _buildNote(String noteText, int index){
+  Widget _buildNote(String noteText, int index) {
     if (noteText != "") {
-        return new ListTile(
-          title: new Text(noteText),
-          trailing: IconButton(icon: Icon(Icons.delete), onPressed: () {_removeNote(index);}),
+      return new ListTile(
+        title: new Text(noteText),
+        trailing: IconButton(icon: Icon(Icons.delete), onPressed: () {
+          _removeNote(index);
+        }),
       );
     }
     return new ListTile(
-          title: new Text(noteText),
+      title: new Text(noteText),
     );
-
   }
 
   void _addNewNoteScreen() {
@@ -72,15 +73,17 @@ class _HomePageState extends State<HomePage> {
               return new Scaffold(
                   appBar: new AppBar(
                     title: TextField(
-                    autocorrect: true,
-                    textAlign: TextAlign.center,
-                    decoration: InputDecoration(
-                      hintText: 'New Note',
+                      autocorrect: true,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        hintText: 'New Note',
+                      ),
+                      style: TextStyle(color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 22),
                     ),
-                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22),
-                ),
-            backgroundColor: Colors.purple,
-              ),
+                    backgroundColor: Colors.purple,
+                  ),
                   body: new TextField(
                     autofocus: true,
                     decoration: new InputDecoration(
@@ -100,12 +103,13 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _removeNote(int index){
+  void _removeNote(int index) {
     showDialog(
         context: context,
         builder: (BuildContext context) {
           return new AlertDialog(
-              title: new Text('Are you sure you want to delete note #${index + 1} ?'),
+              title: new Text(
+                  'Are you sure you want to delete note #${index + 1} ?'),
               actions: <Widget>[
                 new TextButton(
                     child: new Text('CANCEL'),
@@ -132,11 +136,42 @@ class _HomePageState extends State<HomePage> {
         ),
         body: _buildNotes(),
         floatingActionButton: new FloatingActionButton(
-            onPressed: _addNewNoteScreen,
-            tooltip: 'Add note',
-            child: new Icon(Icons.add),
+          onPressed: _addNewNoteScreen,
+          tooltip: 'Add note',
+          child: new Icon(Icons.add),
+        ),
+        drawer: Drawer(
+          child: Container(
+            color: Colors.white60,
+            child: ListView(
+              padding: EdgeInsets.all(5.0),
+              children: <Widget>[
+                ListTile(
+                  title: Text('Home'),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                Divider(),
+                ListTile(
+                  title: Text('Favourites'),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                Divider(),
+                ListTile(
+                  title: Text('Archive'),
+                  onTap:() {
+                    Navigator.pop(context);
+                  },
+                ),
+                Divider(),
+              ],
+            ),
+          ),
         ),
     );
   }
-}
 
+}
