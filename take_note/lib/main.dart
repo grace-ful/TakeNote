@@ -146,7 +146,11 @@ class _HomePageState extends State<HomePage> {
             child: ListView(
               padding: EdgeInsets.all(5.0),
               children: <Widget>[
+                DrawerHeader(
+                    child: Text('TakeNote'),
+                ),
                 ListTile(
+                  leading: Icon(Icons.home_outlined),
                   title: Text('Home'),
                   onTap: () {
                     Navigator.pop(context);
@@ -154,6 +158,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Divider(),
                 ListTile(
+                  leading: Icon(Icons.star_border_outlined),
                   title: Text('Favourites'),
                   onTap: () {
                     Navigator.pop(context);
@@ -161,10 +166,16 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Divider(),
                 ListTile(
+                  leading: Icon(Icons.archive_outlined),
                   title: Text('Archive'),
                   onTap:() {
                     Navigator.pop(context);
                   },
+                ),
+                Divider(),
+                ListTile(
+                  leading: Icon(Icons.settings_outlined),
+                  title: Text('Settings'),
                 ),
                 Divider(),
               ],
