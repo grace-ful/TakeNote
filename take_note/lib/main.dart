@@ -90,7 +90,7 @@ class _HomePageState extends State<HomePage> {
             maxLines: null,
             onSubmitted: (val) {
               _addNewNote(val);
-              Navigator.pop(context); // Close the add todo screen
+              Navigator.of(context).pop();
             },
           ));
     }));
@@ -155,7 +155,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.of(context).pop();
                 },
               ),
               Divider(),
@@ -168,7 +168,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.of(context).pop();
                 },
               ),
               Divider(),
@@ -181,7 +181,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.of(context).pop();
                 },
               ),
               Divider(),
@@ -193,6 +193,9 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.purple[800],
                   ),
                 ),
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
               ),
               Divider(),
             ],
